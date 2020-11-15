@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Product } from '../product.model';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.css']
+  styleUrls: ['./products-list.component.css'],
 })
 export class ProductsListComponent implements OnInit {
+  @Input() productList: Product[];
+  @Output() onProductSelected: EventEmitter<Product>;
 
-  constructor() { }
+  private currentProduct: Product;
 
-  ngOnInit(): void {
+  constructor() {
+    this.onProductSelected = new EventEmitter();
   }
 
+  ngOnInit(): void {}
 }
